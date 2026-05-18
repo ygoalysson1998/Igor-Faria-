@@ -1305,7 +1305,7 @@ const observer = new IntersectionObserver(entries => {
 reveals.forEach(r => observer.observe(r));
 
 // CARRINHO
-const SERVER_URL = 'https://SEU-SERVIDOR.railway.app'; // ← substitui após publicares no Railway
+const CHECKOUT_URL = '/api/create-checkout-session';
 let cart = [];
 
 function addToCart(product) {
@@ -1378,7 +1378,7 @@ async function checkout() {
   btn.disabled = true;
   btn.textContent = 'A processar...';
   try {
-    const res = await fetch(`${SERVER_URL}/create-checkout-session`, {
+    const res = await fetch(CHECKOUT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: cart })
